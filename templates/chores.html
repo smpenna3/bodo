@@ -1,0 +1,52 @@
+{% extends 'loginbase.html' %}
+
+{% block content %}
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Chore Name</th>
+			<th>Day of Week</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<form method='POST'>
+				<td><input type='text' name='name' placeholder='Chore Name'></input></td>
+				<td>
+					<select name='DOW' required>
+						<option value="sunday">Sunday</option>
+						<option value="monday">Monday</option>
+						<option value="tuesday">Tuesday</option>
+						<option value="wednesday">Wednesday</option>
+						<option value="thursday">Thursday</option>
+						<option value="friday">Friday</option>
+						<option value="saturday">Saturday</option>
+					</select>
+				</td>
+				<td><p><button type='submit'>Add Chore</button></p></td>
+			</form>
+		</tr>
+		{%- if User.team.chore.all()|length > 0 %}
+			{%- for chore in User.team.chore %}
+				<tr>
+					<td>{{ chore.name }}</td>
+					<td>{{ chore.DOW }}</td>
+					<td>
+						<form method='POST' action='/delete/{{chore.id}}'>
+							<p><button type='submit'>X</button></p>
+						</form>
+					</td>
+
+				</tr>
+			{%- endfor %}
+			</tbody>
+		</table>
+		{%- else %}
+			<h4>No chores in your team! Add some!</h4>
+
+		{% endif %}
+{% endblock %}

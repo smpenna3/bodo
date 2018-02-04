@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block basehead %}
+<style>
+#content {
+	margin: auto;
+	grid-row-start: 1;
+	grid-row-end: 3;
+}
+
+h2 {
+	text-align: center;
+	color: white;
+	font-size: 50px;
+}
+
+#splash {
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	display: grid;
+	margin: 0;
+	padding: 0;
+	background-image: url(https://cleaningpros.ca/media/filer_public_thumbnails/filer_public/89/68/896832da-20c4-41e6-8f53-3e9d554e1c25/canada_house_cleaning_banner_for_cleaningpros-min.jpg__1170x0_q85_subsampling-2_upscale.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+form {
+	text-align: center;
+}
+
+input, select {
+	background-color: rgba(255, 255, 255, 0.5);
+	border: 0px solid;
+	text-align: center;
+}
+
+.button {
+	background-color: #000;
+	border: 0px solid;
+	color: white;
+	padding: 14px 25px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.button:hover, .button:active {
+		background-color: #4CAF50;
+}
+</style>
+{% endblock %}
+
+{% block basecontent %}
+<div id="splash">
+	<div id="content">
+		<h2>Login</h2>
+		<form method="post">
+			<p><input type='text' name='username' placeholder="Username" required></p>
+			<p><input type='password' name = 'password' placeholder="Password" required></p>
+			<p><button class="button" type="submit">Go!</button></p>
+		</form>
+	</div>
+	<div></div>
+	<div></div>
+</div>
+
+{% endblock %}

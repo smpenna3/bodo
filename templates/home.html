@@ -1,0 +1,33 @@
+{% extends "loginbase.html" %}
+{% block content %}
+
+
+
+
+<h1>Home</h1>
+<p>This is where you end up when you login</p>
+<p>Team: {{ User.team.teamName }}</p>
+<p>Email: {{ User.email }}</p>
+<p>Username: {{ User.username }}</p>
+
+<h1>My Chores</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Task</th>
+			<th>Due</th>
+		</tr>
+	</thead>
+
+	<tbody>
+		{%- for chore in User.chore %}
+			<tr>
+				<td>{{ chore.name}}</td>
+				<td>{{ chore.DOW}}</td>
+			</tr>
+		{%- endfor %}
+	</tbody>
+</table>
+
+{% endblock %}

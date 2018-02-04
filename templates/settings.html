@@ -1,0 +1,21 @@
+{% extends "loginbase.html" %}
+
+{% block content %}
+
+<h1>Hi {{ User.username }}! What would you like to change?</h1>
+<br/>
+
+<h3>Change Team</h3>
+<form method='POST'>
+	<select name='teamAction' required>
+		<option value="" disabled selected>Pick Selection</option>
+		<option value="create">Create Team</option>
+		<option value="join">Join Team</option>
+	</select>
+	<p><label>New Team Name:</label><input type='text' name='teamName' required></p>
+	<p><label>New Team Key:</label><input type='text' name='teamKey' required></p>
+	<p><button type='submit'>Submit</button></p>
+</form>
+
+
+{% endblock %}
