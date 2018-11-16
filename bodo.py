@@ -22,7 +22,7 @@ logging.basicConfig(format=formatter)
 logger = logging.getLogger('mainlog')
 logger.setLevel(logging.DEBUG)
 #handler = logging.StreamHandler()
-#handler.addFormatter(formatter)
+#handler.setFormatter(formatter)
 #logger.addHandler(logging.StreamHandler())
 
 # Setup flask and database
