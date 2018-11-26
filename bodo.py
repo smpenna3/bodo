@@ -1,4 +1,4 @@
-from flask import *
+from flask import Flask, render_template, redirect, session, request, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
 import os
 import logging
@@ -30,6 +30,7 @@ app = Flask(__name__)
 basedir = os.path.join(os.path.dirname(__file__), 'bodo.db')
 db_uri = 'sqlite:///{}'.format(basedir)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'bodo 420'
 
 # Setup database object
@@ -376,4 +377,4 @@ def login_post():
 if __name__ == '__main__':
 	scheduler.add_job(assign, 'cron', day_of_week='sat', hour='1')
 	logger.debug("Cron job added to update jobs every saturday at 1am")
-	app.run(host='0.0.0.0', debug=True)
+	app.run(host='0.0.0.0', debug=True, use_reloader=False)
