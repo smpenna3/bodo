@@ -65,7 +65,12 @@ if __name__ == '__main__':
 	db_uri = 'sqlite:///{}'.format(basedir)
 	app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 	app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-	app.config['SECRET_KEY'] = 'bodo 420'
+	app.config['SECRET_KEY'] = 'changethis'
+
+	if(app.config['SECRET_KEY'] == 'changethis'):
+		logger.critical('SECRET KEY NOT UPDATED')
+		logger.critical('SECRET KEY NOT UPDATED')
+		logger.critical('SECRET KEY NOT UPDATED')
 
 	# Setup database object
 	db = SQLAlchemy(app)
