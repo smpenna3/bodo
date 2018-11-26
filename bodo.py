@@ -71,6 +71,7 @@ if __name__ == '__main__':
 	db = SQLAlchemy(app)
 	logger.info('Database setup')
 	from database import *
+	db.create_all()
 
 	from login import *  # Import the login and signup routes
 	from chores import *  # Import the chores routes
