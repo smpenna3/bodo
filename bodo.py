@@ -61,7 +61,7 @@ logger.addHandler(stream)
 if __name__ == '__main__':
 	# Setup flask and database
 	app = Flask(__name__)
-	basedir = os.path.join(os.path.dirname(__file__), 'bodo.db')
+	basedir = os.path.join(os.path.dirname(__file__), 'data_bodo.db')
 	db_uri = 'sqlite:///{}'.format(basedir)
 	app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 	app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
