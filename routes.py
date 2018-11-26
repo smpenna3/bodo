@@ -1,4 +1,4 @@
-from flask import render_template, session, request, url_for
+from flask import render_template, session, request, url_for, redirect
 
 from __main__ import db, app, Team, Chore, User, logger
 

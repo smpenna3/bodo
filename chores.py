@@ -1,4 +1,6 @@
-from flask import render_template, session, request, redirect
+from flask import render_template, session, request, redirect, url_for
+from random import random
+from random import shuffle
 
 from __main__ import db, app, User, Chore, Team, logger
 
