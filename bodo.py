@@ -16,14 +16,40 @@ random.seed(time.time())
 scheduler = BackgroundScheduler()
 scheduler.start()
 
-# Setup logging
-formatter = ('%(asctime)s - [%(levelname)7s]. - %(message)s')
-logging.basicConfig(format=formatter)
-logger = logging.getLogger('mainlog')
+### Setup logging
+applogs_directory = './app_logs/'
+logFile = os.path.join(applogs_directory, 'debug.log')
+errorLogFile = os.path.join(applogs_directory, 'error.log')
+
+if not os.path.exists(applogs_directory):
+	# If not, create it
+	os.makedirs(applogs_directory)
+
+logger = logging.getLogger('mainLog')
 logger.setLevel(logging.DEBUG)
-#handler = logging.StreamHandler()
-#handler.setFormatter(formatter)
-#logger.addHandler(logging.StreamHandler())
+
+# Setup a formatter for the normal logging and error logging 
+# (error has filename and line, standard doesn't for space considerations)
+sformatter = logging.Formatter('%(asctime)-23s - %(name)-9s - [%(levelname)-8s] - %(message)s')
+eformatter = logging.Formatter('%(asctime)-23s - %(filename)-20s - %(lineno)-4s ' \
+								+ '- [%(levelname)-8s] - %(message)s')
+
+# Setup handlers for the regular file handler
+rfh = logging.handlers.RotatingFileHandler(logFile, \
+			maxBytes=(constants.maxDebugLogSize), backupCount=constants.logBackups)
+rfh.setLevel(logging.DEBUG)
+# Setup handlers for the error file handler
+err = logging.handlers.RotatingFileHandler(errorLogFile, \
+			maxBytes=(constants.maxErrorLogSize), backupCount=constants.logBackups)
+
+err.setLevel(logging.WARNING)
+# Add the formatters
+rfh.setFormatter(sformatter)
+err.setFormatter(eformatter)
+# Add the handlers to the logger
+logger.addHandler(rfh)
+logger.addHandler(err)
+
 
 # Setup flask and database
 app = Flask(__name__)

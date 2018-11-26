@@ -10,3 +10,6 @@ __pycache__/
 
 ## Client secret
 client_secret.json
+
+## app logs
+app_logs/
