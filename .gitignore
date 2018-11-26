@@ -1,0 +1,12 @@
+## VScode files
+.vscode/
+
+## PY files
+__pycache__/
+*.pyc
+
+## Database
+*.db
+
+## Client secret
+client_secret.json
