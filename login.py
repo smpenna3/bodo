@@ -16,7 +16,7 @@ def signup_post():
 	session['teamName'] = request.form['teamName']
 	session['teamKey'] = request.form['teamKey']
 
-	logger.debug('Got Data: ' + session['username'] + '  ' + session['teamName'])
+	logger.debug(f'Got Data: {session["username"]}  {session["teamName"]}')
 
 	# Check if the username already exists, if so quit
 	q = db.session.query(User.id).filter(User.username==session['username'])

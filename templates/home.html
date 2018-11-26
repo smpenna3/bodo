@@ -1,8 +1,10 @@
 {% extends "loginbase.html" %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/home.css') }}">
+{% endblock %}
+
 {% block content %}
-
-
-
 
 <h1>Home</h1>
 <p>This is where you end up when you login</p>
@@ -12,7 +14,7 @@
 
 <h1>My Chores</h1>
 
-<table>
+<table id="chores">
 	<thead>
 		<tr>
 			<th>Task</th>
@@ -23,8 +25,8 @@
 	<tbody>
 		{%- for chore in User.chore %}
 			<tr>
-				<td>{{ chore.name}}</td>
-				<td>{{ chore.DOW}}</td>
+				<td>{{ chore.name }}</td>
+				<td>{{ chore.DOW }}</td>
 			</tr>
 		{%- endfor %}
 	</tbody>
