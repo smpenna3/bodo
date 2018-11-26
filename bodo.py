@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, session, request, flash, url_for
 from flask_sqlalchemy import SQLAlchemy
 import os
-import logging
+import logging, logging.handlers
 from random import shuffle
 import random as random
 import time
@@ -36,11 +36,11 @@ eformatter = logging.Formatter('%(asctime)-23s - %(filename)-20s - %(lineno)-4s 
 
 # Setup handlers for the regular file handler
 rfh = logging.handlers.RotatingFileHandler(logFile, \
-			maxBytes=(constants.maxDebugLogSize), backupCount=constants.logBackups)
+			maxBytes=(5*1024*1024), backupCount=5)
 rfh.setLevel(logging.DEBUG)
 # Setup handlers for the error file handler
 err = logging.handlers.RotatingFileHandler(errorLogFile, \
-			maxBytes=(constants.maxErrorLogSize), backupCount=constants.logBackups)
+			maxBytes=(5*1024*1024), backupCount=5)
 
 err.setLevel(logging.WARNING)
 # Add the formatters
