@@ -2,8 +2,9 @@
 Webapp to manage household chores
 
 
-## Required Packages
+## Requirements
+- Python 3.6+
 - apscheduler
-- sudo pip install --upgrade google-api-python-client
+- Google Calendar API  [https://developers.google.com/calendar/quickstart/python]
 - flask
 - flask-sqlalchemy
