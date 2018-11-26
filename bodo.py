@@ -43,12 +43,18 @@ err = logging.handlers.RotatingFileHandler(errorLogFile, \
 			maxBytes=(5*1024*1024), backupCount=5)
 
 err.setLevel(logging.WARNING)
+# Setup handler for stream
+stream = logging.StreamHandler()
+
 # Add the formatters
 rfh.setFormatter(sformatter)
 err.setFormatter(eformatter)
+stream.setFormatter(sformatter)
+
 # Add the handlers to the logger
 logger.addHandler(rfh)
 logger.addHandler(err)
+logger.addHandler(stream)
 
 
 # Setup flask and database
