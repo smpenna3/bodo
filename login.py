@@ -34,7 +34,7 @@ def signup_post():
 
 	# IF the team name doesn't exist, create the team and add to database
 	elif teamAction == 'create':
-		team = Team(session['teamName'], session['teamKey'])
+		team = Team(teamName=session['teamName'], teamKey=session['teamKey'])
 		team.numMembers = 0
 		teamObject = team
 		db.session.add(team)
@@ -60,8 +60,7 @@ def signup_post():
 		teamObject = db.session.query(Team).filter_by(teamName=session['teamName']).first()
 
 	# If all above conditions are satisfied, create the user in the database
-	user = User(session['username'], password, session['email'], session['phone'])
-	teamObject.user.append(user)
+	user = User(username=session['username'], password=password, email=session['email'], phone=session['phone'], team=teamObject)
 	teamObject.numMembers += 1
 	db.session.add(user)
 	db.session.commit()

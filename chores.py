@@ -24,7 +24,7 @@ def chores_post():
 	teamObject = user.team
 
 	# If not create the chore
-	chore = Chore(session['choreName'], session['choreDOW'])
+	chore = Chore(name=session['choreName'], DOW=session['choreDOW'])
 	teamObject.chore.append(chore)
 	teamObject.numChores += 1
 	db.session.add(chore)

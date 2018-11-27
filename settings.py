@@ -25,7 +25,7 @@ def settings_post():
 
 	# IF the team name doesn't exist, create the team and add to database
 	elif teamAction == 'create':
-		team = Team(teamName, teamKey)
+		team = Team(teamName=teamName, teamKey=teamKey)
 		team.numMembers = 0
 		teamObject = team
 		db.session.add(team)
