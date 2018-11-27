@@ -29,7 +29,7 @@ class User(db.Model):
 	email = db.Column(db.String(50))
 	phone = db.Column(db.String(50))
 	team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
-	team = db.relationship('Team', backref='users')
+	team = db.relationship('Team', backref=db.backref('users', lazy='dynamic'))
 
 	def __repr__(self):
 		return '<User %r, Email %r, Phone %r>' % (self.username,  self.email,  self.phone)
@@ -42,4 +42,6 @@ class Chore(db.Model):
 	DOW = db.Column(db.Integer)
 	assignment = db.Column(db.String(50))
 	user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-	user = db.relationship('User', backref='chores')
+	user = db.relationship('User', backref=db.backref('chores', lazy='dynamic'))
+	team_id = db.Column(db.Integer, db.ForeignKey('teams.id'))
+	team = db.relationship('Team', backref=db.backref('chores', lazy='dynamic'))

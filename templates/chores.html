@@ -30,8 +30,8 @@
 				<td><p><button type='submit'>Add Chore</button></p></td>
 			</form>
 		</tr>
-		{%- if User.team.chore.all()|length > 0 %}
-			{%- for chore in User.team.chore %}
+		{%- if User.team.chores.all()|length > 0 %}
+			{%- for chore in User.team.chores %}
 				<tr>
 					<td>{{ chore.name }}</td>
 					<td>{{ chore.DOW }}</td>
