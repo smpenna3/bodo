@@ -16,8 +16,8 @@ class Team(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	teamName = db.Column(db.String(50), unique=True)
 	teamKey = db.Column(db.String(50))
-	numMembers = db.Column(db.Integer)
-	numChores = db.Column(db.Integer)
+	numMembers = db.Column(db.Integer, default=0)
+	numChores = db.Column(db.Integer, default=0)
 
 
 # Class for the user table, holding all users, passwords, and random data

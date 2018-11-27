@@ -25,7 +25,7 @@ def chores_post():
 
 	# If not create the chore
 	chore = Chore(name=session['choreName'], DOW=session['choreDOW'])
-	teamObject.chore.append(chore)
+	teamObject.chores.append(chore)
 	teamObject.numChores += 1
 	db.session.add(chore)
 	db.session.commit()
@@ -60,20 +60,20 @@ def assign():
 		else:
 			j = 0
 			flag = 0
-			a = range(0, len(teamObject.chore.all()))
+			a = range(0, len(teamObject.chores.all()))
 			shuffle(a)
 			while(1):
 				if(flag):
 					break
 				else:
-					for user in teamObject.user.all():
-						if(j >= len(teamObject.chore.all())):
+					for user in teamObject.users.all():
+						if(j >= len(teamObject.chores.all())):
 							logger.info('Team ' + str(teamObject.teamName) + ' Assignments Scrambled')
 							flag = 1
 							break
 						else:
-							chore = teamObject.chore.all()[a[j]]
-							user.chore.append(chore)
+							chore = teamObject.chores.all()[a[j]]
+							user.chores.append(chore)
 							db.session.commit()
 
 							# Send notifications
